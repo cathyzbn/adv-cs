@@ -16,10 +16,11 @@ public class PolygonHW {
 		
 		ArrayList<Point> coors2 = new ArrayList<Point>();
 		Triangle t2 = new Triangle(3, coors2);
-		t2.addOneCordinate(3.0, 3.0);
-		t2.addOneCordinate(3.0, 7.0);
-		t2.addOneCordinate(9.0, 3.0);
-//		System.out.println(t2);
+//		t2.addOneCordinate(0, 0);
+//		t2.addOneCordinate(4, 0);
+//		t2.addOneCordinate(2, 2*Math.sqrt(3));
+//		System.out.println(t2.isEquilateral());
+//		
 		
 		//constructor 2
 		Triangle t3 = new Triangle(new Point(0.0, 0.0), new Point(0.0, 1.0), new Point(1.0, 0.0));
@@ -135,6 +136,7 @@ public class PolygonHW {
 			Point p1 = coordinates.get(1);
 			Point p2 = coordinates.get(2);
 			
+			
 			double d1 = getDistanceSquared(p0, p1);
 			double d2 = getDistanceSquared(p1, p2);
 			double d3 = getDistanceSquared(p2, p0);
@@ -142,7 +144,8 @@ public class PolygonHW {
 //			System.out.println(d1);
 //			System.out.println(d2);
 //			System.out.println(d3);
-//			
+//			System.out.println(d1-d2);
+////			
 			return (Math.abs(d1-d2) <= 0.0000003 && Math.abs(d2-d3)<= 0.0000003);
 		}
 	
@@ -163,7 +166,7 @@ public class PolygonHW {
 	
 	private static double getDistanceSquared(Point p1, Point p2) {
 
-		return Math.pow((p1.x-p1.y), 2)+ Math.pow((p2.x-p2.y), 2);
+		return Math.pow((p1.x-p2.x), 2)+ Math.pow((p1.y-p2.y), 2);
 		
 	}
 }
