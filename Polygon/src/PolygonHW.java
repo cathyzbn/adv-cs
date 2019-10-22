@@ -117,8 +117,6 @@ public class PolygonHW {
 		double area() {
 			// TODO Auto-generated method stub
 			
-			double output = 0;
-			
 			double x0 = coordinates.get(0).x;
 			double y0 = coordinates.get(0).y;
 			double x1 = coordinates.get(1).x;
@@ -126,10 +124,7 @@ public class PolygonHW {
 			double x2 = coordinates.get(2).x;
 			double y2 = coordinates.get(2).y;
 			
-			output += x0*y1+x1*y2+x2*y0-x0*y2-x1*y0-x2*y1;
-			output *= 0.5;
-			output = Math.abs(output);
-			return output;
+			return Math.abs((x0*y1+x1*y2+x2*y0-x0*y2-x1*y0-x2*y1)*0.5);
 		}
 
 		@Override
@@ -148,8 +143,7 @@ public class PolygonHW {
 //			System.out.println(d2);
 //			System.out.println(d3);
 //			
-			if(Math.abs(d1-d2) <= 0.0000001 && Math.abs(d2-d3)<= 0.0000001 ) {return true;}
-			else{return false;}
+			return (Math.abs(d1-d2) <= 0.0000003 && Math.abs(d2-d3)<= 0.0000003);
 		}
 	
 	}
@@ -168,17 +162,8 @@ public class PolygonHW {
 	}
 	
 	private static double getDistanceSquared(Point p1, Point p2) {
-		double x1 = p1.x;
-		double y1 = p1.y;
-		double x2 = p2.x;
-		double y2 = p2.y;
-		
-		double output = 0;
-//		System.out.println(x1 + ", " + x2);
-//		System.out.println(y1 + ", " + y2);
-		output += Math.pow((x1-x2), 2);
-		output += Math.pow((y1-y2), 2);
-		return output;
+
+		return Math.pow((p1.x-p1.y), 2)+ Math.pow((p2.x-p2.y), 2);
 		
 	}
 }
