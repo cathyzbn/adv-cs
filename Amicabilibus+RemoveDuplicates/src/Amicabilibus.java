@@ -18,8 +18,10 @@ public class Amicabilibus {
 //	    return sum;
 //	}
 	
-//this is Sarah's method, but apparently it runs really slow...
 	public static int sumFactors(int n) {
+		if(n ==0) {
+			return 0;
+		}
 		int sum = 1;
 		int original = n;
 		for(int i=2; i*i<=n; i++) {
@@ -47,6 +49,7 @@ public class Amicabilibus {
 			if(j <= upperbound && checked[i] == false && j!=i) {
 				checked[i] = true; 
 				if(i == factorSums.get(j)) {
+					checked[j] = true;
 					System.out.println("(" + i+ "," + factorSums.get(i) + ")");
 				}
 			}
