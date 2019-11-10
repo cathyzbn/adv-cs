@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Amicabilibus {
 	
-	public static final int upperbound = 901425; //(int) Math.pow(10, 6);
+	public static final int upperbound = (int) Math.pow(10, 6);
 	public static ArrayList<Integer> factorSums = new ArrayList<Integer>();
 	public static boolean[] checked = new boolean[upperbound+1];
 	
@@ -24,7 +24,7 @@ public class Amicabilibus {
 		}
 		int sum = 1;
 		int original = n;
-		for(int i=2; i*i<=n; i++) {
+		for(int i=2; i <= Math.sqrt(n); i++) {
 			int product = 1;
 			while(n%i == 0) {
 				product=product*i+1;
