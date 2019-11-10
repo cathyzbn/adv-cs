@@ -52,18 +52,15 @@ public class HarryPotterReader {
 		HashMap<String, Integer> dictionary = new HashMap<String, Integer>();
 		
 		for(String key:keys) {
-			if(dictionary.containsKey(key)) {
-				dictionary.put(key, dictionary.get(key) +1);
-			}else {
-				dictionary.put(key, 1);
-			}
+			
+			if(dictionary.containsKey(key)) {dictionary.put(key, dictionary.get(key) +1);}
+			else {dictionary.put(key, 1);}
 			
 		}
 		
 		return dictionary;
 		
 	}
-	
 	
 	public static String trimIt(String word) {
 		
@@ -80,17 +77,23 @@ public class HarryPotterReader {
 		while(word.charAt(lastIndex)<lowerLimit || word.charAt(lastIndex)>upperLimit) {
 			lastIndex --;
 		}
+		
 		return word.substring(firstIndex, lastIndex+1);
+		
 	}
 	
 	public static LinkedHashMap<String, Integer> sort(Map<String, Integer> unsorted) {
+		
 		//function adapted from https://howtodoinjava.com/sort/java-sort-map-by-values/
+		
 		LinkedHashMap<String, Integer> sorted = new LinkedHashMap<>();
-		unsorted.entrySet()
-	    .stream()
+		
+		unsorted.entrySet().stream()
 	    .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())) 
 	    .forEachOrdered(x -> sorted.put(x.getKey(), x.getValue()));
+		
 		return sorted;
+		
 	}
 }
 
