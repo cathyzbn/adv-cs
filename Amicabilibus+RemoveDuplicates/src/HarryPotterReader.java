@@ -73,30 +73,14 @@ public class HarryPotterReader {
 		int firstIndex = 0;
 		int lastIndex = word.length()-1;
 		
-		boolean isWord = false;
-		/*this is to solve a problem that comes up since 
-		 *if there is no letters then the the firstIndex goes to length()
-		 *and the lastIndex goes to 0 and it cannot be sliced.
-		 */
-		for(char ch : word.toCharArray()) {
-			if(ch>=lowerLimit && ch<=upperLimit) {
-				isWord = true;
-			}
+		while((word.charAt(firstIndex)<lowerLimit || word.charAt(firstIndex)>upperLimit)) {
+			firstIndex ++;
+			if(firstIndex == word.length()) {return "";}
 		}
-		
-		if(isWord) {
-			while(word.charAt(firstIndex)<lowerLimit || word.charAt(firstIndex)>upperLimit) {
-				firstIndex ++;
-			}
-			while(word.charAt(lastIndex)<lowerLimit || word.charAt(lastIndex)>upperLimit) {
-				lastIndex --;
-			}
-			return word.substring(firstIndex, lastIndex+1);
-		}else {
-			return "";
+		while(word.charAt(lastIndex)<lowerLimit || word.charAt(lastIndex)>upperLimit) {
+			lastIndex --;
 		}
-		
-		
+		return word.substring(firstIndex, lastIndex+1);
 	}
 	
 	public static LinkedHashMap<String, Integer> sort(Map<String, Integer> unsorted) {
