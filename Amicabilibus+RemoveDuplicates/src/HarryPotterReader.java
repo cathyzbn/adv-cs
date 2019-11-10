@@ -68,22 +68,27 @@ public class HarryPotterReader {
 	public static String trimIt(String word) {
 		
 		word = word.toLowerCase();
+		final int upperLimit = 122, lowerLimit = 97;
 		
 		int firstIndex = 0;
 		int lastIndex = word.length()-1;
 		
 		boolean isWord = false;
+		/*this is to solve a problem that comes up since 
+		 *if there is no letters then the the firstIndex goes to length()
+		 *and the lastIndex goes to 0 and it cannot be sliced.
+		 */
 		for(char ch : word.toCharArray()) {
-			if(Character.valueOf(ch)>=97 && Character.valueOf(ch)<=123) {
+			if(ch>=lowerLimit && ch<=upperLimit) {
 				isWord = true;
 			}
 		}
 		
 		if(isWord) {
-			while(Character.valueOf(word.charAt(firstIndex))<97 || Character.valueOf(word.charAt(firstIndex))>123) {
+			while(word.charAt(firstIndex)<lowerLimit || word.charAt(firstIndex)>upperLimit) {
 				firstIndex ++;
 			}
-			while(Character.valueOf(word.charAt(lastIndex))<97 || Character.valueOf(word.charAt(lastIndex))>123) {
+			while(word.charAt(lastIndex)<lowerLimit || word.charAt(lastIndex)>upperLimit) {
 				lastIndex --;
 			}
 			return word.substring(firstIndex, lastIndex+1);
@@ -93,17 +98,6 @@ public class HarryPotterReader {
 		
 		
 	}
-	
-	
-	public static void removeDuplicates(ArrayList<String> list) {
-		ArrayList<String> output = new ArrayList<String>();
-		for(String item:list) {
-			if(!output.contains(item)){output.add(item);}
-		}
-		list.clear();
-		list.addAll(output);
-	}
-	
 	
 	public static LinkedHashMap<String, Integer> sort(Map<String, Integer> unsorted) {
 		//function adapted from https://howtodoinjava.com/sort/java-sort-map-by-values/
