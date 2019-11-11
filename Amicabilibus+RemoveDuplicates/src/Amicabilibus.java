@@ -5,7 +5,7 @@ public class Amicabilibus {
 	
 	public static final int upperbound = (int) Math.pow(10, 6);
 	public static ArrayList<Integer> factorSums = new ArrayList<Integer>();
-	public static boolean[] checked = new boolean[upperbound+1];
+	public static ArrayList<Integer> checked = new ArrayList<Integer>();
 	
 //	public static int sumFactors(int n) {
 //		int sum = 1;
@@ -46,12 +46,9 @@ public class Amicabilibus {
 		
 		for(int i=0; i<=upperbound; i++) {
 			int j = factorSums.get(i);
-			if(j <= upperbound && checked[i] == false && j!=i) {
-				checked[i] = true; 
-				if(i == factorSums.get(j)) {
-					checked[j] = true;
-					System.out.println("(" + i+ "," + factorSums.get(i) + ")");
-				}
+			if(j <= upperbound &&i == factorSums.get(j)&& !checked.contains(i) && j!=i) {
+				checked.add(j);
+				System.out.println("(" + i+ "," + factorSums.get(i) + ")");			
 			}
 		}
 	}
