@@ -9,13 +9,14 @@ import java.util.Scanner;
 public class HarryPotterReader {
 	
 	public static void main(String[] args) {
-		
+		long start = System.currentTimeMillis();
 		Map<String, Integer> counted = countDuplicates(readFile("harry_potter.txt"));
 		LinkedHashMap<String, Integer> sorted = sort(counted);
 		
 		for(String key: sorted.keySet()) {
 			System.out.println(key + " : " + sorted.get(key));
 		}
+		long end = System.currentTimeMillis();	
 	}
 	
 	public static ArrayList<String> readFile(String fileName) {
